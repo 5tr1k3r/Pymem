@@ -114,7 +114,7 @@ def base_module(handle):
     return module_info
 
 
-def open(process_id, debug=None, process_access=None):
+def open(process_id, debug=True, process_access=None):
     """Open a process given its process_id.
     By default the process is opened with full access and in debug mode.
 
@@ -131,8 +131,6 @@ def open(process_id, debug=None, process_access=None):
     :return: A handle of the given process_id
     :rtype: ctypes.c_void_p
     """
-    if debug is None:
-        debug = True
     if not process_access:
         process_access = pymem.ressources.structure.PROCESS.PROCESS_ALL_ACCESS.value
     if debug:
